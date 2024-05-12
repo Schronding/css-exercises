@@ -46,3 +46,49 @@ a {
 ul {
   list-style-type: none;
 }
+
+/* Solution */
+.header {
+  display: flex;
+  /* This display has the purpose of inhereting to both of its children divisions, which are represented with the class 'left' and ...
+  ... 'right' respectively. This is so we can better control the positioning of the elements of the left, and the elements ...
+  ... on the right, however, the children of these two classes are flex items too >> */
+  padding: 8px; 
+  justify-content: space-between;
+  /* This line is where the magic happens: 'justify-content:space-between;' makes so there is an equal gap between the flex items ...
+  ... of this flex container, but as the flex items of the container 'header' are the containers 'left' and 'right' what the ...
+  ... algorithm does is take all the available space to separate them as apart as possible, effectively putting them on the edges. */
+}
+
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  /* On the inside of the code for lists there is both padding and margin added to compensate for the space that ...
+  ... takes adding the bullet points (numbers for ordered lists, and points for unordered ones). As we retired ...
+  ... additions with the 'list-style-type: none;' that added space just makes everything to be positioned a bit oddly. */
+  gap: 16px; 
+  /* Take note that this gap only separates the links themselves, the logo is still practically attatched to the ...
+  ... first link there is. */
+}
+
+
+.left,
+.right {
+  display: flex;
+  /* >> That is why we also apply 'display:flex' to them, as to make the logo, the links, the notifications and the profile ...
+  ... picture flex items too. */
+  align-items: center;
+  /* The "justify" elements work within the main axis, while the "align" ones work on the cross axis. 
+  In this case that means that from the top, to the bottom of our flex CONTAINER each element is placed at the ...
+  middlepoint; the center. */
+  gap: 16px; 
+  /* This line does separate the profile picture from the notification button, as well as the logo from the link one.
+  Why we needed two gaps? Because we have 4 flex containers, one for each time we wrote 'display: flex'. 
+  The first one is our 'header' in which we used the 'justify-content: space-between' to separate its flex items, 
+  'left' and 'right'. 
+  The second flex container is the unordered list, in which its children (the list items) are separated by the ...
+  ... gap of 16px, but the logo and the elements on the right remain "glued" as they haven't been separated yet. 
+  It is not until this last gap, that is applied to both 'left' and 'right' that finally separates the rest of ...
+  ... the flex items. Note how the gap in the left separates the ITEM of the logo, to the CONTAINER of the links.*/
+}
